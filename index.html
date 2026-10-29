@@ -59,6 +59,14 @@ button.on{background:var(--hi);border-color:var(--acc)}
 .pop h3{margin:14px 0 6px;font-size:14px}
 label.opt{display:flex;gap:8px;align-items:flex-start;margin:8px 0;cursor:pointer}
 label.opt input{margin-top:3px}
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:6px}
+.tiers label{display:flex;flex-direction:column;gap:2px;font-size:12px;color:var(--mute)}
+#tierBox summary{cursor:pointer;margin:6px 0;font-weight:600}
+#tierList{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px 12px;max-height:260px;overflow:auto}
+#tierList div{display:flex;justify-content:space-between;align-items:center;gap:6px;padding:2px 0;border-bottom:1px solid var(--line)}
+#tierList div.chg span{color:var(--acc);font-weight:600}
+#tierList select{padding:2px 4px;font-size:12px}
+@media (max-width:480px){.tiers{grid-template-columns:repeat(2,1fr)}}
 table{width:100%;border-collapse:collapse;margin:10px 0;font-variant-numeric:tabular-nums}
 td{padding:4px 6px;border-bottom:1px solid var(--line)}
 td.n{text-align:right;white-space:nowrap}
@@ -134,6 +142,14 @@ td.n{text-align:right;white-space:nowrap}
   <label class="opt" style="align-items:center"><span>Zoom per wheel notch</span>
     <select id="optWheel"><option value="0.35">Fine (0.35)</option><option value="0.6">Normal (0.6)</option><option value="0.9">Fast (0.9)</option><option value="1.3">Very fast (1.3)</option></select></label>
   <h3>World &amp; continent modes</h3>
+  <p class="mute" style="margin:4px 0 8px">Countries are drawn according to how often GeoGuessr shows them. Set the weight of each tier, then move any country to another tier below.</p>
+  <div class="tiers" id="tierW"></div>
+  <label class="opt" style="align-items:center"><span>Cities in rare and very rare countries</span>
+    <select id="optRareCap"><option value="1">Biggest city only</option><option value="3">Top 3</option><option value="5">Top 5</option><option value="10">Top 10</option><option value="0">Same as other countries</option></select></label>
+  <details id="tierBox"><summary>Countries by tier <span class="mute" id="tierSum"></span></summary>
+    <div class="row" style="margin:8px 0"><input type="text" id="tierFind" placeholder="Filter countries…" style="flex:1"><button id="tierReset">Reset tiers</button></div>
+    <div id="tierList"></div>
+  </details>
   <label class="opt"><input type="checkbox" id="optMicro"><span>Skip micro-territories (under 1,000 km²)<br><span class="mute" id="microList"></span></span></label>
   <h3>Progress</h3>
   <button id="reset">Reset progress for this pool</button>
@@ -167,7 +183,7 @@ const store = {
   set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
 };
 let srs = store.get('cp.srs', {});      // id -> [box, seen, totalScore, lastGuessLat, lastGuessLon]
-let prefs = Object.assign({country:'FR', minpop:{}, len:'10', mode:'place', base:'roads', labels:true, sat:true, micro:true, wheel:0.6, confirm:false, fold:false}, store.get('cp.prefs', {}));
+let prefs = Object.assign({country:'FR', minpop:{}, len:'10', mode:'place', base:'roads', labels:true, sat:true, micro:true, tierW:{1:4,2:2,3:1,4:0}, tierOv:{}, rareCap:3, wheel:0.6, confirm:false, fold:false}, store.get('cp.prefs', {}));
 const savePrefs = () => store.set('cp.prefs', prefs);
 
 // ---------- helpers ----------
@@ -390,9 +406,16 @@ function diag(list){
 
 const MICRO_KM2 = 1000;
 const isMicro = k => DATA.area[k] < MICRO_KM2;
-const multiCcs = cont => Object.keys(DATA.cities).filter(k => (!cont || DATA.continents[k]===cont) && !(prefs.micro && isMicro(k)));
+// How often each country shows up in GeoGuessr (1 = common … 4 = almost never). Editable in Settings.
+const TIER_DEF = {"AD":3,"AE":2,"AL":2,"AR":1,"AS":3,"AT":2,"AU":1,"BD":2,"BE":2,"BG":2,"BM":3,"BO":2,"BR":1,"BT":3,"BW":2,"CA":1,"CC":3,"CH":2,"CL":1,"CO":1,"CW":3,"CX":3,"CZ":2,"DE":1,"DK":2,"DO":2,"EC":2,"EE":2,"ES":1,"FI":1,"FO":3,"FR":1,"GB":1,"GH":2,"GI":3,"GL":3,"GR":2,"GT":2,"GU":3,"HK":3,"HR":2,"HU":2,"ID":1,"IE":2,"IL":2,"IM":3,"IN":1,"IS":2,"IT":1,"JE":3,"JO":2,"JP":1,"KE":2,"KG":2,"KH":2,"KR":1,"KZ":2,"LA":2,"LB":3,"LI":3,"LK":2,"LS":3,"LT":2,"LU":3,"LV":2,"MC":3,"ME":2,"MG":3,"MK":2,"ML":4,"MN":2,"MO":3,"MP":3,"MT":3,"MX":1,"MY":1,"NG":2,"NL":2,"NO":1,"NZ":1,"PA":2,"PE":1,"PH":1,"PL":1,"PR":2,"PS":3,"PT":2,"QA":3,"RE":3,"RO":1,"RS":2,"RU":1,"RW":3,"SE":1,"SG":3,"SI":2,"SK":2,"SM":3,"SN":2,"SZ":3,"TH":1,"TN":2,"TR":1,"TW":2,"UA":1,"UG":2,"US":1,"UY":2,"VI":3,"VN":2,"ZA":1};
+const TIER_NAME = {1:'Common', 2:'Regular', 3:'Rare', 4:'Very rare'};
+const tierOf = k => +(prefs.tierOv[k] || TIER_DEF[k] || 2);
+const tierW = k => +(prefs.tierW[tierOf(k)] ?? 1);
+const isRare = k => tierOf(k) >= 3;
+const multiCcs = cont => Object.keys(DATA.cities).filter(k => (!cont || DATA.continents[k]===cont) && !(prefs.micro && isMicro(k)) && tierW(k) > 0);
 // Top-N scaled to country size: micro-territories → 1, small countries → 2, big ones → N
 function capFor(k, n){
+  if (isRare(k) && +prefs.rareCap) n = Math.min(n, +prefs.rareCap);   // rare countries: biggest cities only
   const a = DATA.area[k];
   if (a < MICRO_KM2) return Math.min(1, n);
   return Math.min(n, Math.max(Math.min(2, n), Math.round(n*Math.sqrt(a/150000))));
@@ -450,6 +473,7 @@ function loadScope(){
   scope = $('country').value; prefs.scope = scope;
   multi = scope==='W' || scope.startsWith('C:');
   ccs = scope==='W' ? multiCcs() : multi ? multiCcs(scope.slice(2)) : [scope];
+  if (!ccs.length) ccs = Object.keys(DATA.cities).filter(k => scope==='W' || DATA.continents[k]===scope.slice(2));   // every tier switched off: ignore tiers
   fillThresh();
   applyPool();
 }
@@ -493,11 +517,11 @@ function pick(){
   const avoid = new Set(recent.slice(-Math.min(8, Math.floor(list.length/2))));
   const ok = x => !avoid.has(baseId(x));
   if (!multi || drill) return wpick(list, x => ok(x) ? wOf(x) : 0);
-  // Multi-country: pick the COUNTRY first (equal odds, weighted by how weak you are there), then a city.
+  // Multi-country: pick the COUNTRY first (odds = GeoGuessr frequency tier × how weak you are there), then a city.
   const recentCc = new Set(recent.slice(-Math.min(3, Math.floor(ccs.length/2))).map(id=>id.split('|')[0]));
   const k = wpick(ccs, k => {
     const l = byCc[k].filter(ok); if (!l.length || recentCc.has(k)) return 0;
-    return l.reduce((a,x)=>a+wOf(x),0)/l.length;
+    return tierW(k) * l.reduce((a,x)=>a+wOf(x),0)/l.length;
   });
   return wpick(byCc[k], x => ok(x) ? wOf(x) : 0);
 }
@@ -884,6 +908,32 @@ setFold(!!prefs.fold);
 $('optWheel').value = String(prefs.wheel);
 $('optWheel').onchange = e => { prefs.wheel = +e.target.value; savePrefs(); };
 $('microList').textContent = 'Skipped: ' + Object.keys(DATA.area).filter(isMicro).map(k=>DATA.countries[k]).sort().join(', ');
+function tiersChanged(){ savePrefs(); fillScopes(); loadScope(); renderTiers(); $('settings').style.display='block'; }
+function renderTiers(){
+  const W = [['0','Off'],['1','×1'],['2','×2'],['4','×4'],['8','×8']];
+  $('tierW').innerHTML = [1,2,3,4].map(t => `<label>${TIER_NAME[t]}<select data-t="${t}">${
+    W.map(([v,l]) => `<option value="${v}" ${+prefs.tierW[t]===+v?'selected':''}>${l}</option>`).join('')}</select></label>`).join('');
+  const q = fold($('tierFind').value || '');
+  const cc = Object.keys(DATA.countries).sort((a,b) => tierOf(a)-tierOf(b) || DATA.countries[a].localeCompare(DATA.countries[b]));
+  $('tierList').innerHTML = cc.filter(k => !q || fold(DATA.countries[k]).includes(q) || k.toLowerCase()===q).map(k =>
+    `<div class="${prefs.tierOv[k] ? 'chg' : ''}"><span>${esc(DATA.countries[k])}</span><select data-k="${k}">${
+      [1,2,3,4].map(t => `<option value="${t}" ${tierOf(k)===t?'selected':''}>${TIER_NAME[t]}</option>`).join('')}</select></div>`).join('');
+  const n = t => Object.keys(DATA.countries).filter(k => tierOf(k)===t).length;
+  const ch = Object.keys(prefs.tierOv).length;
+  $('tierSum').textContent = `(${[1,2,3,4].map(t => n(t)+' '+TIER_NAME[t].toLowerCase()).join(' · ')}${ch ? ' · '+ch+' changed' : ''})`;
+  $('optRareCap').value = String(prefs.rareCap ?? 3);
+}
+$('tierW').onchange = e => { const t = e.target.dataset.t; if (!t) return; prefs.tierW = {...prefs.tierW, [t]: +e.target.value}; tiersChanged(); };
+$('tierList').onchange = e => {
+  const k = e.target.dataset.k; if (!k) return;
+  const t = +e.target.value; const ov = {...prefs.tierOv};
+  if (t === TIER_DEF[k]) delete ov[k]; else ov[k] = t;
+  prefs.tierOv = ov; tiersChanged();
+};
+$('tierFind').oninput = renderTiers;
+$('tierReset').onclick = () => { prefs.tierOv = {}; tiersChanged(); };
+$('optRareCap').onchange = e => { prefs.rareCap = +e.target.value; tiersChanged(); };
+renderTiers();
 $('optMicro').onchange = e => { prefs.micro = e.target.checked; savePrefs(); fillScopes(); loadScope(); $('settings').style.display='block'; };
 
 $('base').value = STYLES[prefs.base] ? prefs.base : 'roads';

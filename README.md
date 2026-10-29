@@ -17,6 +17,8 @@ Pick a map, a pool size and a mode, then play rounds of 5, 10, 20 cities or endl
 - One country: the pool is set by a population threshold (≥ 5k … ≥ 1M); the default keeps about 120 cities.
 - Multi-country: GeoGuessr world or one continent. The pool is the top N cities per country (fewer for small countries, one for micro-territories, which can be skipped in the settings). A country is drawn first, then a city, so big countries don't crowd out the rest.
 
+**Country frequency** (world and continent maps): each country has a GeoGuessr frequency tier (Common, Regular, Rare, Very rare). A country is drawn with odds = tier weight × how weak you are there. Defaults: Common ×4, Regular ×2, Rare ×1, Very rare off; rare countries keep only their 3 biggest cities. Everything is editable in Settings (⚙): weight per tier, cities kept in rare countries, and the tier of any country. Single-country maps are not affected.
+
 **Scoring**: GeoGuessr-style, `5000 · e^(−10·d / D)`, where `D` is the size of the map (the country's diagonal, or the GeoGuessr world map value for the world).
 
 **After each answer**: distance, score, region of the city, population, a satellite close-up, and place names on the Roads basemap (hidden while you guess).
