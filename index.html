@@ -405,11 +405,24 @@ function fillScopes(){
     `<optgroup label="Multi-country"><option value="W">GeoGuessr world (${multiCcs().length})</option>` +
     Object.entries(CONT).map(([k,v])=>`<option value="C:${k}">${v} (${n(k)})</option>`).join('') + `</optgroup>` +
     `<optgroup label="Country">` + countries.map(([k,v])=>`<option value="${k}">${v} (${DATA.cities[k].length})</option>`).join('') + `</optgroup>`;
-  const p = keep || prefs.scope || prefs.country || 'FR';
+  const h = hashScope();
+  const p = keep || h || prefs.scope || prefs.country || 'FR';
   $('country').value = [...$('country').options].some(o=>o.value===p) ? p : 'FR';
   $('len').value = prefs.len || '10';
   $('mode').value = mode;
 }
+// Lien direct : #fr ouvre la carte de ce pays (#w = monde, #c:eu = un continent)
+function hashScope(){
+  const h = decodeURIComponent(location.hash.slice(1)).trim().toUpperCase();
+  if (!h) return null;
+  if (h === 'W' || (h.startsWith('C:') && CONT[h.slice(2)])) return h;
+  return DATA.cities[h] ? h : null;
+}
+addEventListener('hashchange', () => {
+  const h = hashScope();
+  if (!h || h === scope) return;
+  $('country').value = h; closePops(); loadScope();
+});
 function defaultThresh(list){
   for (const t of THRESH){ if (list.filter(c=>c[3]>=t).length <= 120) return t; }
   return THRESH[THRESH.length-1];
