@@ -78,7 +78,8 @@ td.n{text-align:right;white-space:nowrap}
 .tip .maplibregl-popup-tip{display:none}
 .maplibregl-ctrl-attrib{font-size:11px}
 @media (max-width:520px){#city{font-size:20px}#legend{display:none}}
-.tgm-nav{display:inline-flex;gap:4px;align-items:center;margin-right:6px;flex:none}.tgm-nav a{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:7px;border:1px solid currentColor;opacity:.5;color:inherit;text-decoration:none;font-size:14px;line-height:1}.tgm-nav a:hover,.tgm-nav a:focus-visible{opacity:1}
+.tgm-nav{display:inline-flex;gap:4px;align-items:center;margin-right:6px;flex:none}.tgm-nav>a{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:7px;border:1px solid currentColor;opacity:.5;color:inherit;text-decoration:none;font-size:14px;line-height:1}.tgm-nav>a:hover,.tgm-nav>a:focus-visible{opacity:1}
+.tgm-maps{position:relative;display:inline-block}.tgm-maps>summary{list-style:none;display:inline-grid;place-items:center;width:28px;height:28px;border-radius:7px;border:1px solid currentColor;opacity:.5;cursor:pointer;font-size:14px;line-height:1}.tgm-maps>summary::-webkit-details-marker{display:none}.tgm-maps[open]>summary,.tgm-maps>summary:hover{opacity:1}.tgm-pop{position:absolute;top:34px;left:0;z-index:9999;width:min(360px,calc(100vw - 24px));background:#1b2229;color:#e8edf2;border:1px solid #3a4652;border-radius:10px;padding:10px 12px;box-shadow:0 8px 24px #0006;font:13px/1.35 system-ui,sans-serif;text-align:left}.tgm-pop b{display:block;font-size:13px;margin-bottom:6px}.tgm-pop a{display:inline;width:auto;height:auto;border:0;opacity:1;color:#e8edf2;text-decoration:none}.tgm-pop a:hover{color:#f2c94c}.tgm-pop li{display:flex;gap:8px;align-items:baseline;margin:4px 0}.tgm-pop ul{list-style:none;margin:0;padding:0}.tgm-pop .lv{flex:none;width:16px;text-align:center;font-size:11px;border:1px solid #4b5866;border-radius:3px;color:#9fb0bf}.tgm-pop .ml{margin-left:auto;flex:none;color:#9fb0bf;font-size:12px}
 </style>
 </head>
 <body>
@@ -87,15 +88,16 @@ td.n{text-align:right;white-space:nowrap}
 <div id="top" class="panel">
   <div id="controls">
   <div class="row">
-<span class="tgm-nav"><a href="https://tgm-hub.github.io/Atlas/" title="Atlas">⌂</a><a href="https://tgm-hub.github.io/Atlas/daily.html" target="gg-daily" title="Révision du jour">⏱</a></span>
+<span class="tgm-nav"><a href="https://tgm-hub.github.io/Atlas/" title="Atlas">⌂</a><a href="https://tgm-hub.github.io/Atlas/daily.html" target="gg-daily" title="Révision du jour">⏱</a><details class="tgm-maps"><summary title="Maps LearnableMeta à jouer sur GeoGuessr">🎯</summary><div class="tgm-pop"><b>Maps LearnableMeta (GeoGuessr)</b><ul><li><span class="lv" title="avancé">A</span><a href="https://www.geoguessr.com/maps/672c29044d6bde5fefe6a013" target="_blank" rel="noopener">A Learnable Meta - Philippines Provinces ↗</a><a class="ml" href="https://learnablemeta.com/maps/672c29044d6bde5fefe6a013" target="_blank" rel="noopener">metas</a></li><li><span class="lv" title="avancé">A</span><a href="https://www.geoguessr.com/maps/6789e329c85e81c3e3bacee6" target="_blank" rel="noopener">ALM - Kenya Counties ↗</a><a class="ml" href="https://learnablemeta.com/maps/6789e329c85e81c3e3bacee6" target="_blank" rel="noopener">metas</a></li><li><span class="lv" title="intermédiaire">I</span><a href="https://www.geoguessr.com/maps/69a2f4bf1d0c5d4abe21fc86" target="_blank" rel="noopener">ALM - Colombian Departments ↗</a><a class="ml" href="https://learnablemeta.com/maps/69a2f4bf1d0c5d4abe21fc86" target="_blank" rel="noopener">metas</a></li><li><span class="lv" title="avancé">A</span><a href="https://www.geoguessr.com/maps/6a65f2ada66861b727dfd11e" target="_blank" rel="noopener">ALM - Ecuadorian Provinces ↗</a><a class="ml" href="https://learnablemeta.com/maps/6a65f2ada66861b727dfd11e" target="_blank" rel="noopener">metas</a></li><li><span class="lv" title="intermédiaire">I</span><a href="https://www.geoguessr.com/maps/6a6df121315e3451c784ca91" target="_blank" rel="noopener">ALM - Peruvian Regions ↗</a><a class="ml" href="https://learnablemeta.com/maps/6a6df121315e3451c784ca91" target="_blank" rel="noopener">metas</a></li><li><span class="lv" title="avancé">A</span><a href="https://www.geoguessr.com/maps/679ff170e238f221b1a5c387" target="_blank" rel="noopener">ALM - Nigeria States ↗</a><a class="ml" href="https://learnablemeta.com/maps/679ff170e238f221b1a5c387" target="_blank" rel="noopener">metas</a></li><li><span class="lv" title="avancé">A</span><a href="https://www.geoguessr.com/maps/67e08974e409a960f4c6f1d3" target="_blank" rel="noopener">A Learnable Japan Prefecture Kanji ↗</a><a class="ml" href="https://learnablemeta.com/maps/67e08974e409a960f4c6f1d3" target="_blank" rel="noopener">metas</a></li><li><span class="lv" title="intermédiaire">I</span><a href="https://www.geoguessr.com/maps/6a5f9c00d8434883779a29bd" target="_blank" rel="noopener">Bangladesh districts (bengali script) ↗</a><a class="ml" href="https://learnablemeta.com/maps/6a5f9c00d8434883779a29bd" target="_blank" rel="noopener">metas</a></li><li><span class="lv" title="intermédiaire">I</span><a href="https://www.geoguessr.com/maps/68e98173c40e65558d7ef0fd" target="_blank" rel="noopener">A Learnable Europe - Cities ↗</a><a class="ml" href="https://learnablemeta.com/maps/68e98173c40e65558d7ef0fd" target="_blank" rel="noopener">metas</a></li><li><span class="lv" title="avancé">A</span><a href="https://www.geoguessr.com/maps/690ee502b64ee729c47dc248" target="_blank" rel="noopener">A Comprehensive Canada - Cities ↗</a><a class="ml" href="https://learnablemeta.com/maps/690ee502b64ee729c47dc248" target="_blank" rel="noopener">metas</a></li><li><span class="lv" title="avancé">A</span><a href="https://www.geoguessr.com/maps/690cd3a38557eb9267299ddc" target="_blank" rel="noopener">A Learnable Peru: Cities ↗</a><a class="ml" href="https://learnablemeta.com/maps/690cd3a38557eb9267299ddc" target="_blank" rel="noopener">metas</a></li><li><span class="lv" title="avancé">A</span><a href="https://www.geoguessr.com/maps/67af2aa7df4bac71b8fd0351" target="_blank" rel="noopener">Learnable Russian City and Town Names ↗</a><a class="ml" href="https://learnablemeta.com/maps/67af2aa7df4bac71b8fd0351" target="_blank" rel="noopener">metas</a></li></ul></div></details></span>
     <select id="country" aria-label="Map"></select>
     <select id="minpop" aria-label="Pool size"></select>
     <select id="len" aria-label="Round length">
       <option value="5">5 / round</option><option value="10" selected>10 / round</option><option value="20">20 / round</option><option value="0">Endless</option>
     </select>
     <select id="mode" aria-label="Mode">
-      <option value="place">Name → place it</option><option value="name">Pin → type the name</option>
+      <option value="place">Name → place it</option><option value="name">Pin → type the name</option><option value="region">Name → click its region</option>
     </select>
+    <select id="rlevel" aria-label="Region level" style="display:none"></select>
     <span style="flex:1"></span>
     <button id="weakBtn" title="Your weak spots in this pool">Weak spots</button>
     <button id="setBtn" title="Settings" aria-label="Settings">⚙</button>
@@ -287,6 +289,13 @@ map.on('style.load', () => {
     map.addLayer({id:'borders', type:'line', source:'borders',
       paint:{'line-color': base==='sat' ? 'rgba(255,255,255,.8)' : (dark?'#8b95a3':'#7a8594'), 'line-width':1}});
   }
+  map.addSource('adm', {type:'geojson', data:admData()});
+  const st = (k, v) => ['==', ['feature-state', k], v];
+  map.addLayer({id:'adm-fill', type:'fill', source:'adm', paint:{
+    'fill-color': ['case', st('res','good'), css('--good'), st('res','near'), css('--mid'), st('res','bad'), css('--bad'), css('--acc')],
+    'fill-opacity': ['case', ['!=', ['feature-state','res'], null], 0.38, ['boolean', ['feature-state','sel'], false], 0.3,
+                     ['boolean', ['feature-state','hover'], false], 0.14, 0.01], 'fill-antialias':false}});
+  map.addLayer({id:'adm-line', type:'line', source:'adm', paint:{'line-color': base==='sat' ? 'rgba(255,255,255,.75)' : css('--mute'), 'line-width':1}});
   map.addSource('hl', {type:'geojson', data:hlData()});
   map.addLayer({id:'hl-fill', type:'fill', source:'hl', paint:{'fill-color':css('--acc'), 'fill-opacity':0.12, 'fill-antialias':false}});
   map.addLayer({id:'hl-line', type:'line', source:'hl', paint:{'line-color':css('--acc'), 'line-width':2}});
@@ -325,6 +334,17 @@ function showLabels(on){ if (glLabels===on) return; glLabels = on; applyLabels()
 // ---------- country highlight (used by the "country" hint) ----------
 const POLY = {}; for (const f of COUNTRIES.features) POLY[f.id] = f.geometry;
 let hlCc = null;
+function admData(){ return regionMode() && ADMC[scope] ? ADMC[scope].fc[admLevel(scope)] : {type:'FeatureCollection', features:[]}; }
+function setAdm(){ const src = map.getSource && map.getSource('adm'); if (src){ src.setData(admData()); try { map.removeFeatureState({source:'adm'}); } catch(e){} } hoverId = null; }
+let hoverId = null;
+map.on('mousemove', 'adm-fill', e => {
+  if (!regionMode() || answered) return;
+  const id = e.features[0] && e.features[0].id; if (id === hoverId) return;
+  if (hoverId != null) map.setFeatureState({source:'adm', id:hoverId}, {hover:false});
+  hoverId = id; if (id != null) map.setFeatureState({source:'adm', id}, {hover:true});
+  map.getCanvas().style.cursor = 'pointer';
+});
+map.on('mouseleave', 'adm-fill', () => { if (hoverId != null) map.setFeatureState({source:'adm', id:hoverId}, {hover:false}); hoverId = null; map.getCanvas().style.cursor = ''; });
 function hlData(){
   const g = hlCc && POLY[DATA.isonum[hlCc]];
   return {type:'FeatureCollection', features: g ? [{type:'Feature', properties:{}, geometry:unwrapGeom(g)}] : []};
@@ -397,7 +417,22 @@ let mode = prefs.mode;
 const scoreOf = km => Math.round(5000*Math.exp(-10*km/D));
 const scopeName = () => scope==='W' ? 'GeoGuessr world' : multi ? CONT[scope.slice(2)] : DATA.countries[scope];
 const baseId = x => x.cc+'|'+x.c[0]+'|'+x.c[1];
-const idX = x => (mode==='name' ? 'R|' : '') + baseId(x);   // separate progress per mode
+// Region mode: Natural Earth admin-1 units per country, loaded on demand from admin1/<cc>.json (tools/build_admin1.py)
+const ADM_INDEX = {"AD":{"sub":7},"AE":{"sub":9},"AL":{"sub":12},"AR":{"sub":24},"AS":{"sub":5},"AT":{"sub":9},"AU":{"sub":12},"BD":{"sub":7},"BE":{"sub":11,"reg":3},"BG":{"sub":28},"BM":{"sub":11},"BO":{"sub":9},"BR":{"sub":27},"BT":{"sub":20,"reg":4},"BW":{"sub":15},"CA":{"sub":13,"reg":3},"CH":{"sub":26},"CL":{"sub":16},"CO":{"sub":34},"CZ":{"sub":14},"DE":{"sub":16},"DK":{"sub":5},"DO":{"sub":32},"EC":{"sub":24},"EE":{"sub":15},"ES":{"sub":52,"reg":19},"FI":{"sub":18},"FR":{"sub":96,"reg":13},"GB":{"sub":232,"reg":16},"GH":{"sub":10},"GL":{"sub":6},"GR":{"sub":14},"GT":{"sub":22},"HK":{"sub":18,"reg":3},"HR":{"sub":21},"HU":{"sub":43,"reg":7},"ID":{"sub":33},"IE":{"sub":34,"reg":8},"IL":{"sub":6},"IN":{"sub":36},"IS":{"sub":9},"IT":{"sub":110,"reg":20},"JO":{"sub":12},"JP":{"sub":47},"KE":{"sub":8},"KG":{"sub":8},"KH":{"sub":24},"KR":{"sub":17},"KZ":{"sub":16},"LA":{"sub":17},"LB":{"sub":6},"LI":{"sub":11},"LK":{"sub":25,"reg":9},"LS":{"sub":10},"LT":{"sub":10},"LU":{"sub":3},"LV":{"sub":119,"reg":5},"ME":{"sub":21},"MG":{"sub":22},"MK":{"sub":84},"ML":{"sub":9},"MN":{"sub":22},"MP":{"sub":4},"MT":{"sub":68,"reg":3},"MX":{"sub":33},"MY":{"sub":16},"NG":{"sub":37},"NL":{"sub":15},"NO":{"sub":21},"NZ":{"sub":23,"reg":4},"PA":{"sub":12},"PE":{"sub":26},"PH":{"sub":118,"reg":17},"PL":{"sub":16},"PT":{"sub":20},"QA":{"sub":7},"RO":{"sub":42},"RS":{"sub":25},"RU":{"sub":86,"reg":6},"RW":{"sub":5},"SE":{"sub":21},"SG":{"sub":5},"SI":{"sub":193,"reg":12},"SK":{"sub":8},"SM":{"sub":9},"SN":{"sub":14},"SZ":{"sub":4},"TH":{"sub":77,"reg":6},"TN":{"sub":23},"TR":{"sub":81},"TW":{"sub":21,"reg":3},"UA":{"sub":25},"UG":{"sub":112,"reg":4},"US":{"sub":51,"reg":4},"UY":{"sub":19},"VI":{"sub":3},"VN":{"sub":63},"ZA":{"sub":9}};
+const ADMC = {};
+const admLevel = cc => { const ix = ADM_INDEX[cc]; if (!ix) return null; const p = (prefs.rlev||{})[cc];
+  if (p && ix[p]) return p; return ix.reg && ix.sub > 40 ? 'reg' : 'sub'; };
+async function loadAdm(cc){
+  if (ADMC[cc]) return ADMC[cc];
+  const r = await fetch('admin1/'+cc+'.json'); if (!r.ok) throw new Error(r.status);
+  const j = await r.json(); j.fc = {};
+  for (const lv in j.levels){ const fc = topojson.feature(j.topo, j.topo.objects[lv]); fc.features.forEach(f => { f.id = f.properties.i; }); j.fc[lv] = fc; }
+  j.idxOf = new Map(DATA.cities[cc].map((c,i) => [c,i]));
+  return ADMC[cc] = j;
+}
+const regionMode = () => mode==='region' && !multi && ADM_INDEX[scope];
+const truthRegion = x => { const j = ADMC[x.cc], lv = admLevel(x.cc); return j ? j.city[lv][j.idxOf.get(x.c)] : -1; };
+const idX = x => (mode==='name' ? 'R|' : mode==='region' ? 'G'+(admLevel(x.cc)||'')+'|' : '') + baseId(x);   // separate progress per mode
 const wOf = x => { const s=srs[idX(x)]; return s ? BOX_W[s[0]] : UNSEEN_W; };
 const regionOf = x => DATA.regions[x.cc][x.c[4]] || '';
 const placeOf = x => multi ? [regionOf(x), DATA.countries[x.cc]].filter(Boolean).join(', ') : (regionOf(x) || '—');
@@ -476,14 +511,33 @@ function loadScope(){
   multi = scope==='W' || scope.startsWith('C:');
   ccs = scope==='W' ? multiCcs() : multi ? multiCcs(scope.slice(2)) : [scope];
   if (!ccs.length) ccs = Object.keys(DATA.cities).filter(k => scope==='W' || DATA.continents[k]===scope.slice(2));   // every tier switched off: ignore tiers
+  if (mode==='region' && (multi || !ADM_INDEX[scope])){ mode = 'place'; prefs.mode = mode; $('mode').value = mode; setHint(); }
+  fillRegionUI();
   fillThresh();
   applyPool();
 }
+function fillRegionUI(){
+  const ix = ADM_INDEX[scope], on = mode==='region' && ix && !multi;
+  $('mode').querySelector('option[value=region]').disabled = multi || !ix;
+  $('rlevel').style.display = on && ix.reg ? '' : 'none';
+  if (on && ix.reg){
+    $('rlevel').innerHTML = `<option value="reg">Large regions (${ix.reg})</option><option value="sub">Subdivisions (${ix.sub})</option>`;
+    $('rlevel').value = admLevel(scope);
+  }
+}
 function applyPool(){
   const t = +$('minpop').value; prefs.minpop[scope]=t; prefs.len=$('len').value; savePrefs();
+  if (regionMode() && !ADMC[scope]){
+    const want = scope; $('pool').textContent = 'Loading regions…';
+    loadAdm(want).then(() => { if (scope===want) applyPool(); })
+      .catch(() => { mode = 'place'; prefs.mode = mode; $('mode').value = mode; setHint(); fillRegionUI(); applyPool(); });
+    return;
+  }
+  setAdm();
   pool = []; byCc = {}; drill = null;
   for (const k of ccs){
-    const list = multi ? DATA.cities[k].slice(0, capFor(k,t)) : DATA.cities[k].filter(c=>c[3]>=t);
+    let list = multi ? DATA.cities[k].slice(0, capFor(k,t)) : DATA.cities[k].filter(c=>c[3]>=t);
+    if (regionMode()) list = list.filter(c => truthRegion({cc:k, c}) >= 0);
     byCc[k] = list.map(c=>({cc:k, c}));
     pool.push(...byCc[k]);
   }
@@ -547,7 +601,9 @@ function dirIn(x){
 }
 function hintSteps(){
   const x = cur, steps = [];
-  if (mode==='place'){
+  if (mode==='region'){
+    steps.push({t:dirIn(x)});                  // the region itself is the answer
+  } else if (mode==='place'){
     if (scope==='W') steps.push({t:CONT[DATA.continents[x.cc]]});
     if (multi) steps.push({t:DATA.countries[x.cc], hl:true});
     steps.push({t:dirIn(x)});
@@ -595,7 +651,8 @@ function nextCity(){
   G.clear();
   $('result').style.display='none'; $('mini').style.display='none';
   $('prog').textContent = len ? `${idx+1} / ${len}` : `#${idx+1}`;
-  if (mode==='place'){
+  if (regionMode()) { try { map.removeFeatureState({source:'adm'}); } catch(e){} }
+  if (mode==='place' || mode==='region'){
     $('city').style.display=''; $('ask').style.display='none';
     $('city').textContent = cur.c[0];
     fitLL(view);
@@ -647,11 +704,29 @@ function feedback(km, sc, s, guessLL, guessLabel){
   $('rScore').style.color = css(col);
   $('rDist').textContent = !guessLL ? 'unknown name' : km<1 ? (mode==='name' ? 'correct' : '< 1 km') : `${fmt(km)} km`;
   $('rInfo').innerHTML = `<b style="color:var(--ink)">${esc(c[0])}</b> · ${esc(placeOf(cur))} · pop. ${fmtPop(c[3])} · seen ${s[1]}× · avg ${fmt(s[2]/s[1])} · box ${s[0]}/5${hintsUsed?` · ${hintsUsed} hint${hintsUsed>1?'s':''} (×${HINT_MULT[hintsUsed]})`:''}`;
+  if (regionMode() && lastReg){
+    const {rid, t, near, names} = lastReg;
+    map.setFeatureState({source:'adm', id:t}, {res:'good', hover:false, sel:false});
+    if (rid !== t) map.setFeatureState({source:'adm', id:rid}, {res: near ? 'near' : 'bad', hover:false, sel:false});
+    $('rDist').textContent = rid === t ? `right region: ${names[t]}` : `${near ? 'neighbouring region' : 'wrong region'} · it was ${names[t]}`;
+    lastReg = null;
+  }
   $('result').style.display='block';
   showMini(c[1], c[2]);
   updateMastery();
 }
+let lastReg = null;
+function guessRegion(rid, ll){
+  if (!regionMode() || answered || !cur) return;
+  const j = ADMC[scope], lv = admLevel(scope), t = truthRegion(cur);
+  const near = rid !== t && j.levels[lv].nb[t].includes(rid);
+  const sc = Math.round((rid === t ? 5000 : near ? 2000 : 0) * HINT_MULT[hintsUsed]);
+  const g = [ll.lat, ll.lng], km = hav(g[0], g[1], cur.c[1], cur.c[2]);
+  lastReg = {rid, t, near, names: j.levels[lv].names};
+  feedback(km, sc, record(km, sc, g), g, j.levels[lv].names[rid]);
+}
 function guess(ll){
+  if (ll && ll.rid != null) return guessRegion(ll.rid, ll);
   if (mode!=='place' || answered || !cur) return;
   const g=[ll.lat,ll.lng];
   const km = hav(g[0],g[1],cur.c[1],cur.c[2]);
@@ -859,6 +934,17 @@ function showWeak(){
 // ---------- events ----------
 let pending = null;
 map.on('click', e => {
+  if (regionMode()){
+    if (answered || !cur) return;
+    const f = map.queryRenderedFeatures(e.point, {layers:['adm-fill']})[0];
+    if (!f){ $('hint').textContent = 'Click inside ' + DATA.countries[scope] + ' — on one of the outlined regions'; return; }
+    const ll = {lat:e.lngLat.lat, lng:e.lngLat.lng, rid:f.id};
+    if (!prefs.confirm) return guessRegion(f.id, ll);
+    if (pending && pending.rid != null) map.setFeatureState({source:'adm', id:pending.rid}, {sel:false});
+    pending = ll; map.setFeatureState({source:'adm', id:f.id}, {sel:true});
+    $('guessBtn').style.display = '';
+    return;
+  }
   if (mode!=='place' || answered || !cur) return;
   const ll = {lat:e.lngLat.lat, lng:e.lngLat.lng};
   if (!prefs.confirm) return guess(ll);
@@ -872,11 +958,15 @@ $('country').onchange = loadScope;
 $('minpop').onchange = applyPool;
 $('len').onchange = applyPool;
 $('mode').onchange = () => {
+  const was = mode;
   mode = $('mode').value; prefs.mode = mode; savePrefs();
   $('map').classList.toggle('noclick', mode==='name');
-  setHint();
-  recent=[]; updateMastery(); newRound();
+  setHint(); fillRegionUI();
+  recent=[];
+  if (was==='region' || mode==='region') return applyPool();   // the pool changes (cities outside every region)
+  updateMastery(); newRound();
 };
+$('rlevel').onchange = () => { prefs.rlev = {...(prefs.rlev||{}), [scope]: $('rlevel').value}; savePrefs(); recent=[]; applyPool(); };
 $('weakBtn').onclick = showWeak;
 $('setBtn').onclick = () => { closePops(); $('settings').style.display='block'; };
 $('setClose').onclick = () => $('settings').style.display='none';
@@ -884,7 +974,7 @@ $('base').onchange = e => setBase(e.target.value);
 $('optLabels').onchange = e => { prefs.labels = e.target.checked; savePrefs(); showLabels(answered && prefs.labels); };
 $('optSat').onchange = e => { prefs.sat = e.target.checked; savePrefs(); if (!prefs.sat) $('mini').style.display='none'; else if (answered && cur) showMini(cur.c[1],cur.c[2]); };
 $('reset').onclick = () => {
-  if (!confirm(`Reset "${mode==='name'?'type the name':'place it'}" progress for the ${pool.length} cities of this pool (${scopeName()})?`)) return;
+  if (!confirm(`Reset "${mode==='name'?'type the name':mode==='region'?'click its region':'place it'}" progress for the ${pool.length} cities of this pool (${scopeName()})?`)) return;
   for (const x of pool) delete srs[idX(x)];
   store.set('cp.srs',srs); drill=null; updateMastery();
 };
@@ -902,6 +992,7 @@ $('optConfirm').checked = !!prefs.confirm;
 $('optConfirm').onchange = e => { prefs.confirm = e.target.checked; savePrefs(); setHint(); };
 function setHint(){
   $('hint').textContent = mode==='name' ? 'Type the city at the red pin · Enter to submit/next'
+    : mode==='region' ? (prefs.confirm ? 'Click the region of the city · Space to guess / next' : 'Click the region of the city · Space for next')
     : prefs.confirm ? 'Click to place your pin · Space to guess / next' : 'Click the map to guess · Space for next';
 }
 function setFold(f){ prefs.fold = f; savePrefs(); $('top').classList.toggle('folded', f); $('foldBtn').textContent = f ? '▸' : '▾'; }
