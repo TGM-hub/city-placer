@@ -21,9 +21,10 @@ def ms(args):
     subprocess.run(cmd, shell=isinstance(cmd, str), check=True, capture_output=True)
 
 def load_data():
-    s = (ROOT / "index.html").read_text(encoding="utf-8")
-    d, _ = json.JSONDecoder().raw_decode(s[s.index('{"countries":{"AD"'):])
-    return d
+    """DATA from index.html, cities from data/cities-*.js (tools/cpdata.py)"""
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from cpdata import load_data as _load
+    return _load(ROOT)
 
 def main(src):
     src = Path(src)
