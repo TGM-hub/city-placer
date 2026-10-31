@@ -566,9 +566,10 @@ function fillScopes(){
   $('len').value = prefs.len || '10';
   $('mode').value = mode;
 }
-// Lien direct : #fr ouvre la carte de ce pays (#w = monde, #c:eu = un continent)
+// Lien direct : #fr ouvre la carte de ce pays (#w = monde, #c:eu = un continent) ; #explore/fr l'explore
 function hashScope(){
-  const h = decodeURIComponent(location.hash.slice(1)).trim().toUpperCase();
+  let h = decodeURIComponent(location.hash.slice(1)).trim().toUpperCase();
+  if (h.startsWith('EXPLORE/')) h = h.slice(8);          // #explore/fr (Atlas country pages): load that country, then explore it
   if (!h) return null;
   if (h === 'W' || (h.startsWith('C:') && CONT[h.slice(2)])) return h;
   return NC[h] ? h : null;
