@@ -20,6 +20,7 @@ from shapely.strtree import STRtree
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "admin1"
 MS = shutil.which("mapshaper") or "npx mapshaper"
+OWN_BUILD = {"ID"}   # built by tools/build_id.py (38 current provinces + kabupaten), not from Natural Earth
 
 def ms(args):
     cmd = (MS + " " + args) if " " in MS else [MS] + args.split()
@@ -37,6 +38,10 @@ def main(ne_path):
     index = {}
     tmp = Path(tempfile.mkdtemp())
     for cc in sorted(data["countries"]):
+        if cc in OWN_BUILD:
+            lv = json.loads((OUT / f"{cc}.json").read_text(encoding="utf-8"))["levels"]
+            index[cc] = {k: len(lv[k]["names"]) for k in ("sub", "reg") if k in lv}
+            continue
         feats = [f for f in ne["features"] if f["properties"].get("iso_a2") == cc
                  and "Overseas" not in (f["properties"].get("type_en") or "")]
         if len(feats) < 3: continue

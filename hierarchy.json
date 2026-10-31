@@ -1,0 +1,107 @@
+{
+  "_doc": "Explorer hierarchy per country, edited by hand. Each level is either {from: reg|sub|kab} (a level of admin1/<cc>.json) or {group: reg|sub, units: {name: [member names]}} (hand-made macro-regions over that level). 'name' labels the level (plural), 'one' the singular. Countries not listed: Natural Earth large regions then subdivisions.",
+  "BR": {"levels": [
+    {"name": "Regions", "one": "Region", "group": "sub", "units": {
+      "Norte": ["Acre", "Amapá", "Amazonas", "Pará", "Rondônia", "Roraima", "Tocantins"],
+      "Nordeste": ["Alagoas", "Bahia", "Ceará", "Maranhão", "Paraíba", "Pernambuco", "Piauí", "Rio Grande do Norte", "Sergipe"],
+      "Centro-Oeste": ["Distrito Federal", "Goiás", "Mato Grosso", "Mato Grosso do Sul"],
+      "Sudeste": ["Espírito Santo", "Minas Gerais", "Rio de Janeiro", "São Paulo"],
+      "Sul": ["Paraná", "Rio Grande do Sul", "Santa Catarina"]}},
+    {"name": "States", "one": "State", "from": "sub"}]},
+  "JP": {"levels": [
+    {"name": "Regions", "one": "Region", "group": "sub", "units": {
+      "Hokkaidō": ["Hokkaidō"],
+      "Tōhoku": ["Aomori", "Iwate", "Miyagi", "Akita", "Yamagata", "Fukushima"],
+      "Kantō": ["Ibaraki", "Tochigi", "Gunma", "Saitama", "Chiba", "Tokyo", "Kanagawa"],
+      "Chūbu": ["Niigata", "Toyama", "Ishikawa", "Fukui", "Yamanashi", "Nagano", "Gifu", "Shizuoka", "Aichi"],
+      "Kansai": ["Mie", "Shiga", "Kyōto", "Ōsaka", "Hyōgo", "Nara", "Wakayama"],
+      "Chūgoku": ["Tottori", "Shimane", "Okayama", "Hiroshima", "Yamaguchi"],
+      "Shikoku": ["Tokushima", "Kagawa", "Ehime", "Kōchi"],
+      "Kyūshū & Okinawa": ["Fukuoka", "Saga", "Nagasaki", "Kumamoto", "Ōita", "Miyazaki", "Kagoshima", "Okinawa"]}},
+    {"name": "Prefectures", "one": "Prefecture", "from": "sub"}]},
+  "TH": {"levels": [
+    {"name": "Regions", "one": "Region", "group": "sub", "units": {
+      "North": ["Chiang Mai", "Chiang Rai", "Lampang", "Lamphun", "Mae Hong Son", "Nan", "Phayao", "Phrae", "Uttaradit"],
+      "Northeast (Isan)": ["Amnat Charoen", "Bueng Kan", "Buri Ram", "Chaiyaphum", "Kalasin", "Khon Kaen", "Loei", "Maha Sarakham", "Mukdahan", "Nakhon Phanom", "Nakhon Ratchasima", "Nong Bua Lam Phu", "Nong Khai", "Roi Et", "Sakon Nakhon", "Si Sa Ket", "Surin", "Ubon Ratchathani", "Udon Thani", "Yasothon"],
+      "West": ["Kanchanaburi", "Phetchaburi", "Prachuap Khiri Khan", "Ratchaburi", "Tak"],
+      "Central": ["Ang Thong", "Bangkok Metropolis", "Chai Nat", "Kamphaeng Phet", "Lop Buri", "Nakhon Nayok", "Nakhon Pathom", "Nakhon Sawan", "Nonthaburi", "Pathum Thani", "Phetchabun", "Phichit", "Phitsanulok", "Phra Nakhon Si Ayutthaya", "Samut Prakan", "Samut Sakhon", "Samut Songkhram", "Saraburi", "Sing Buri", "Sukhothai", "Suphan Buri", "Uthai Thani"],
+      "East": ["Chachoengsao", "Chanthaburi", "Chon Buri", "Prachin Buri", "Rayong", "Sa Kaeo", "Trat"],
+      "South": ["Chumphon", "Krabi", "Nakhon Si Thammarat", "Narathiwat", "Pattani", "Phangnga", "Phatthalung", "Phuket", "Ranong", "Satun", "Songkhla", "Surat Thani", "Trang", "Yala"]}},
+    {"name": "Provinces", "one": "Province", "from": "sub"}]},
+  "TR": {"levels": [
+    {"name": "Regions", "one": "Region", "group": "sub", "units": {
+      "Marmara": ["Edirne", "Kirklareli", "Tekirdag", "Istanbul", "Kocaeli", "Yalova", "Sakarya", "Bilecik", "Bursa", "Balikesir", "Çanakkale"],
+      "Aegean": ["Izmir", "Manisa", "Aydin", "Denizli", "Kütahya", "Afyonkarahisar", "Usak", "Mugla"],
+      "Mediterranean": ["Antalya", "Isparta", "Burdur", "Adana", "Mersin", "Hatay", "K. Maras", "Osmaniye"],
+      "Central Anatolia": ["Ankara", "Konya", "Kayseri", "Eskisehir", "Sivas", "Kinkkale", "Aksaray", "Karaman", "Kirsehir", "Nigde", "Nevsehir", "Yozgat", "Çankiri"],
+      "Black Sea": ["Rize", "Trabzon", "Artvin", "Giresun", "Ordu", "Samsun", "Sinop", "Kastamonu", "Bartın", "Karabük", "Zinguldak", "Düzce", "Bolu", "Amasya", "Tokat", "Çorum", "Gümüshane", "Bayburt"],
+      "Eastern Anatolia": ["Erzurum", "Erzincan", "Kars", "Ardahan", "Agri", "Iğdir", "Van", "Mus", "Bitlis", "Bingöl", "Tunceli", "Elazig", "Malatya", "Hakkari"],
+      "Southeastern Anatolia": ["Gaziantep", "Adiyaman", "Kilis", "Sanliurfa", "Diyarbakir", "Mardin", "Batman", "Siirt", "Sirnak"]}},
+    {"name": "Provinces", "one": "Province", "from": "sub"}]},
+  "MY": {"levels": [
+    {"name": "Parts", "one": "Part", "group": "sub", "units": {
+      "Peninsular Malaysia": ["Johor", "Kedah", "Kelantan", "Kuala Lumpur", "Melaka", "Negeri Sembilan", "Pahang", "Perak", "Perlis", "Pulau Pinang", "Putrajaya", "Selangor", "Terengganu"],
+      "East Malaysia (Borneo)": ["Sabah", "Sarawak", "Labuan"]}},
+    {"name": "States", "one": "State", "from": "sub"}]},
+  "PH": {"levels": [
+    {"name": "Island groups", "one": "Island group", "group": "reg", "units": {
+      "Luzon": ["Cordillera Administrative Region (CAR)", "Ilocos (Region I)", "Cagayan Valley (Region II)", "Central Luzon (Region III)", "National Capital Region", "CALABARZON (Region IV-A)", "MIMAROPA (Region IV-B)", "Bicol (Region V)"],
+      "Visayas": ["Western Visayas (Region VI)", "Central Visayas (Region VII)", "Eastern Visayas (Region VIII)"],
+      "Mindanao": ["Zamboanga Peninsula (Region IX)", "Northern Mindanao (Region X)", "Davao (Region XI)", "SOCCSKSARGEN (Region XII)", "Dinagat Islands (Region XIII)", "Autonomous Region in Muslim Mindanao (ARMM)"]}},
+    {"name": "Regions", "one": "Region", "from": "reg"},
+    {"name": "Provinces & cities", "one": "Province", "from": "sub"}]},
+  "AR": {"levels": [
+    {"name": "Regions", "one": "Region", "group": "sub", "units": {
+      "Noroeste (NOA)": ["Jujuy", "Salta", "Tucumán", "Catamarca", "Santiago del Estero", "La Rioja"],
+      "Noreste (NEA)": ["Misiones", "Corrientes", "Chaco", "Formosa"],
+      "Cuyo": ["Mendoza", "San Juan", "San Luis"],
+      "Pampeana": ["Buenos Aires", "Ciudad de Buenos Aires", "Córdoba", "Santa Fe", "Entre Ríos", "La Pampa"],
+      "Patagonia": ["Neuquén", "Río Negro", "Chubut", "Santa Cruz", "Tierra del Fuego"]}},
+    {"name": "Provinces", "one": "Province", "from": "sub"}]},
+  "IN": {"levels": [
+    {"name": "Zones", "one": "Zone", "group": "sub", "units": {
+      "North": ["Chandigarh", "Delhi", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Ladakh", "Punjab", "Rajasthan"],
+      "Central": ["Chhattisgarh", "Madhya Pradesh", "Uttar Pradesh", "Uttarakhand"],
+      "East": ["Bihar", "Jharkhand", "Odisha", "West Bengal", "Andaman and Nicobar"],
+      "West": ["Goa", "Gujarat", "Maharashtra", "Dadra and Nagar Haveli and Daman and Diu"],
+      "South": ["Andhra Pradesh", "Karnataka", "Kerala", "Tamil Nadu", "Telangana", "Puducherry", "Lakshadweep"],
+      "Northeast": ["Arunachal Pradesh", "Assam", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Sikkim", "Tripura"]}},
+    {"name": "States & territories", "one": "State", "from": "sub"}]},
+  "GB": {"levels": [
+    {"name": "Nations", "one": "Nation", "group": "reg", "units": {
+      "England": ["East", "East Midlands", "Greater London", "North East", "North West", "South East", "South West", "West Midlands", "Yorkshire and the Humber"],
+      "Scotland": ["Eastern", "North Eastern", "South Western", "Highlands and Islands"],
+      "Wales": ["East Wales", "West Wales and the Valleys"],
+      "Northern Ireland": ["Northern Ireland"]}},
+    {"name": "Regions", "one": "Region", "from": "reg"},
+    {"name": "Council areas", "one": "Council area", "from": "sub"}]},
+  "ID": {"levels": [
+    {"name": "Islands", "one": "Island group", "from": "reg"},
+    {"name": "Provinces", "one": "Province", "from": "sub"},
+    {"name": "Kabupaten & kota", "one": "Kabupaten / kota", "from": "kab"}]},
+  "FR": {"levels": [{"name": "Régions", "one": "Région", "from": "reg"}, {"name": "Départements", "one": "Département", "from": "sub"}]},
+  "IT": {"levels": [{"name": "Regioni", "one": "Regione", "from": "reg"}, {"name": "Province", "one": "Provincia", "from": "sub"}]},
+  "ES": {"levels": [{"name": "Comunidades", "one": "Comunidad", "from": "reg"}, {"name": "Provincias", "one": "Provincia", "from": "sub"}]},
+  "RU": {"levels": [{"name": "Federal districts", "one": "Federal district", "from": "reg"}, {"name": "Federal subjects", "one": "Federal subject", "from": "sub"}]},
+  "BE": {"levels": [{"name": "Regions", "one": "Region", "from": "reg"}, {"name": "Provinces", "one": "Province", "from": "sub"}]},
+  "US": {"levels": [{"name": "States", "one": "State", "from": "sub"}]},
+  "CA": {"levels": [{"name": "Provinces & territories", "one": "Province", "from": "sub"}]},
+  "DE": {"levels": [{"name": "Länder", "one": "Land", "from": "sub"}]},
+  "AT": {"levels": [{"name": "Länder", "one": "Land", "from": "sub"}]},
+  "CH": {"levels": [{"name": "Cantons", "one": "Canton", "from": "sub"}]},
+  "MX": {"levels": [{"name": "States", "one": "State", "from": "sub"}]},
+  "AU": {"levels": [{"name": "States & territories", "one": "State", "from": "sub"}]},
+  "NG": {"levels": [{"name": "States", "one": "State", "from": "sub"}]},
+  "VN": {"levels": [{"name": "Provinces", "one": "Province", "from": "sub"}]},
+  "NO": {"levels": [{"name": "Counties", "one": "County", "from": "sub"}]},
+  "SE": {"levels": [{"name": "Counties", "one": "County", "from": "sub"}]},
+  "KE": {"levels": [{"name": "Counties", "one": "County", "from": "sub"}]},
+  "PL": {"levels": [{"name": "Voivodeships", "one": "Voivodeship", "from": "sub"}]},
+  "CO": {"levels": [{"name": "Departments", "one": "Department", "from": "sub"}]},
+  "PE": {"levels": [{"name": "Regions", "one": "Region", "from": "sub"}]},
+  "CL": {"levels": [{"name": "Regions", "one": "Region", "from": "sub"}]},
+  "EC": {"levels": [{"name": "Provinces", "one": "Province", "from": "sub"}]},
+  "ZA": {"levels": [{"name": "Provinces", "one": "Province", "from": "sub"}]},
+  "KR": {"levels": [{"name": "Provinces", "one": "Province", "from": "sub"}]},
+  "UA": {"levels": [{"name": "Oblasts", "one": "Oblast", "from": "sub"}]}
+}

@@ -14,6 +14,15 @@ Pick a map, a pool size and a mode, then play rounds of 5, 10, 20 cities or endl
 | Pin → type the name | a pin on the map | type the city (accent-insensitive autocomplete) |
 | Name → click its region | `Clermont-Ferrand` | click its region (single-country maps only) |
 
+The game takes the whole screen: only the question sits on top. Map, pool, round length and mode live behind **⚙** with the other settings (Space or **Play** closes it).
+
+**Explorer** (🧭 Explore or `E`): browse freely, no scoring. World → country → region → subdivision → cities, e.g. *Malaysia › Sarawak › Mukah* or *France › Auvergne-Rhône-Alpes › Puy-de-Dôme*. Click on the map or in the side list; each level shows its units with their city counts and its 10 biggest cities (*Show more* for the rest). Breadcrumb to go back up, `Esc` one level up, `/` to search any city (alternate names too) or country. Each city card has a **Street View ↗** link (nearest Google panorama, to check whether a place is covered); the same link follows every answer in the game. Optional colouring of the cities by mastery in Settings. Direct links: `#explore` (world) or `#explore/my` (one country).
+
+**Hierarchy** (`hierarchy.json`, edited by hand): per country, the levels and their names. A level is either a level of `admin1/<cc>.json` or hand-made macro-regions grouping its units:
+Brazil Norte/Nordeste/… → states, Japan 8 regions → prefectures, Thailand 6 regions (Isan…) → provinces, Turkey 7 regions → provinces,
+Malaysia Peninsular/East → states, Philippines Luzon/Visayas/Mindanao → regions → provinces, Argentina NOA/NEA/Cuyo/Pampeana/Patagonia → provinces,
+India zones → states, UK nations → regions → council areas, Indonesia islands → 38 provinces → 514 kabupaten/kota. Other countries: Natural Earth large regions, then subdivisions.
+
 **Maps**
 - One country: the pool is set by a population threshold (≥ 5k … ≥ 1M); the default keeps about 120 cities.
 - Multi-country: GeoGuessr world or one continent. The pool is the top N cities per country (fewer for small countries, one for micro-territories, which can be skipped in the settings). A country is drawn first, then a city, so big countries don't crowd out the rest.
@@ -37,7 +46,7 @@ regions (French régions, Italian regioni, Philippine regions, Spanish comunidad
 
 **Settings (⚙)**: basemap (Roads, Gray, Satellite, Relief, Borders only), place names after answers, satellite close-up, wheel zoom speed, micro-territories, reset progress for the current pool.
 
-Keys: `Space`/`Enter` next · `H`/`?` hint · `Esc` close panel · `↑ ↓ Enter` in the name suggestions.
+Keys: `Space`/`Enter` next · `H`/`?` hint · `E` explorer · `Esc` close panel / up one level · `↑ ↓ Enter` in the name suggestions.
 
 Progress and preferences are stored in the browser (`localStorage`, keys `cp.srs` and `cp.prefs`).
 
@@ -45,8 +54,10 @@ Progress and preferences are stored in the browser (`localStorage`, keys `cp.srs
 
 ```
 index.html   the whole app: UI, city data, country shapes (about 2.3 MB, no build step)
-admin1/      region outlines per country, loaded on demand by the region mode (generated)
-tools/build_admin1.py  regenerates admin1/ from Natural Earth admin-1 (needs shapely + mapshaper)
+admin1/      region outlines per country, loaded on demand by the region mode and the explorer (generated)
+hierarchy.json  explorer levels and macro-regions per country (hand-edited)
+tools/build_admin1.py  regenerates admin1/ from Natural Earth admin-1 (needs shapely + mapshaper), except ID
+tools/build_id.py      builds admin1/ID.json from the indonesia-kabupaten repo (38 provinces, kabupaten/kota)
 ```
 
 Runtime network: MapLibre GL (jsDelivr) and the basemap tiles. The "Borders only" basemap needs no tiles.
@@ -55,5 +66,6 @@ Runtime network: MapLibre GL (jsDelivr) and the basemap tiles. The "Borders only
 
 - Cities, populations and regions: [GeoNames](https://www.geonames.org), CC BY 4.0.
 - Country borders and admin-1 regions: [Natural Earth](https://www.naturalearthdata.com), public domain.
+- Indonesia (provinces, kabupaten/kota): [geoBoundaries](https://www.geoboundaries.org) IDN ADM2, CC BY 3.0 IGO; names and 38 provinces from [cahyadsn/wilayah](https://github.com/cahyadsn/wilayah) (MIT), via [indonesia-kabupaten](https://github.com/TGM-hub/indonesia-kabupaten).
 - Basemaps: [OpenFreeMap](https://openfreemap.org) (OpenStreetMap data, ODbL), Esri tiles (World Imagery, Light/Dark Gray Canvas, Shaded Relief).
 - Libraries: [MapLibre GL JS](https://maplibre.org) (BSD-3), [topojson-client](https://github.com/topojson/topojson-client) (ISC).
